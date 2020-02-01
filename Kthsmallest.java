@@ -6,6 +6,15 @@ class KthSmallest{
         return arr[k-1];
     }
 
+    public static int maxHeap2(int[] arr, int k){
+        MaxQueue queue = new MaxQueue(k);
+        for(int a : arr){
+            queue.add(a);
+        }
+
+        return queue.peek();
+    }
+
     public static int maxHeap(int[] arr, int k){
         PriorityQueue<Integer> queue = new PriorityQueue<>(k, Collections.reverseOrder());
         for(int i = 0; i < arr.length; i++){
@@ -33,10 +42,11 @@ class KthSmallest{
     }
 
     public static void main(String[] args){
-        int[] arr = new int[]{4, 34, 45, 7, 2, 54, 23, 13, 8, 10, 23, 3, 24, 67, 345, 86, 5, 11, 44, 55};
+        int[] arr = new int[]{4, 34, 45, 7, 2, 54, 23, 13, 8, 10, 21, 3, 24, 67, 345, 86, 5, 11, 44, 55};
         int k = 14;
         System.out.println(sort(arr.clone(), k));
         System.out.println(maxHeap(arr.clone(), k));
+        System.out.println(maxHeap2(arr.clone(), k));
         System.out.println(quickSelect(arr.clone(), 0, arr.length -1, k));
     } 
 }
