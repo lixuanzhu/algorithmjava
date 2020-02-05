@@ -30,7 +30,7 @@ public class MaxQueue{
             return -1;
         }
 
-        swap(0, size -1);
+        Util.swap(queue, 0, size -1);
         size--;
         moveDown();
 
@@ -49,7 +49,7 @@ public class MaxQueue{
             if( queue[c] < queue[p]){
                 return;
             }
-            swap(c, p);
+            Util.swap(queue, c, p);
             c = p;
         }
     }
@@ -64,7 +64,7 @@ public class MaxQueue{
 
             if(l == size - 1 ){
                 if(queue[p] < queue[l]){
-                    swap(p, l);
+                    Util.swap(queue, p, l);
                 }
                 return;
             }
@@ -74,14 +74,8 @@ public class MaxQueue{
                 return;
             }
 
-            swap(p, m);
+            Util.swap(queue, p, m);
             p = m;
         }
-    }
-
-    private void swap(int x, int y){
-        int temp = queue[x];
-        queue[x] = queue[y];
-        queue[y] = temp;
     }
 }

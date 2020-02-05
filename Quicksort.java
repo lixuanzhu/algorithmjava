@@ -5,17 +5,17 @@ class QuickSort{
     public static int partition(int[] arr, int left, int right){
         Random r = new Random();
         int p = r.nextInt(right - left + 1) + left;
-        swap(arr, p, right);
+        Util.swap(arr, p, right);
         int larger = left;
         for(int cur = left; cur < right; cur++)
         {
             if(arr[cur] < arr[right]){
-                swap(arr, cur, larger);
+                Util.swap(arr, cur, larger);
                 larger++;
             }
         }
 
-        swap(arr, larger, right);
+        Util.swap(arr, larger, right);
         return larger;
     }
 
@@ -31,19 +31,6 @@ class QuickSort{
     public static void main(String[] args){
         int[] arr = new int[] {6, 3, 9, 2, 10, 12, 4, 7, 34, 56, 13, 5};
         quickSort(arr, 0, arr.length -1);
-        printArray(arr);
-    }
-
-    public static void swap(int[] arr, int left, int right){
-        int temp = arr[left];
-        arr[left] = arr[right];
-        arr[right] = temp;
-    }
-
-    public static void printArray(int[] arr){
-        for (int n : arr) {
-            System.out.print(n + "\t");
-        }
-        System.out.println();
+        Util.print(arr);
     }
 }
