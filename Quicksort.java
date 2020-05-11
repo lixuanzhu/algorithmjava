@@ -1,5 +1,5 @@
 import java.util.Random;
-
+import help.*;
 class QuickSort{
     
     public static int partition(int[] arr, int left, int right){

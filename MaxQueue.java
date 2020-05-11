@@ -1,3 +1,4 @@
+import help.*;
 public class MaxQueue{
     private int[] queue;
     private int size;

@@ -1,3 +1,4 @@
+import help.*;
 class PartitionList{
     public static void main (String[] args){
         int[] arr = new int[] {34, 2, 24, 56, 24, 6, 8, 17, 23, 24, 34, 67, 4, 24};
