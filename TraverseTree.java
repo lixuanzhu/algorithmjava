@@ -1,5 +1,6 @@
 import java.util.*;
 import help.*;
+
 public class TraverseTree{
     public static void preorderRecursive(TreeNode root, List<Integer> res){
         if(root != null){
@@ -38,6 +39,21 @@ public class TraverseTree{
         }
     }
 
+    public static void preorderIterative2(TreeNode root, List<Integer> res){
+        Stack<TreeNode> s = new Stack<>();
+        s.push(root);
+        while (s.size() > 0){
+            TreeNode r = s.pop();
+            res.add(r.val);
+            if(r.right != null){
+                s.push(r.right);
+            }
+            if(r.left != null){
+                s.push(r.left);
+            }
+        }
+    }
+
     public static void inorderIterative(TreeNode root, List<Integer> res){
         Stack<TreeNode> s = new Stack<>();
         while (s.size() > 0 || root != null){
@@ -48,6 +64,28 @@ public class TraverseTree{
             root = s.pop();
             res.add(root.val);
             root = root.right;
+        }
+    }
+
+    public static void inorderIterative2(TreeNode root, List<Integer> res){
+        Stack<Pair> s = new Stack<>();
+        s.push(new Pair(root, false));
+        while (s.size() > 0){
+            Pair r = s.pop();
+            if(r.self){
+                res.add(r.node.val);
+                continue;
+            }
+            
+            if(r.node.right != null){
+                s.push(new Pair(r.node.right, false));
+            }
+
+            s.push(new Pair(r.node, true));
+
+            if(r.node.left != null){
+                s.push(new Pair(r.node.left, false));
+            }
         }
     }
 
@@ -69,7 +107,7 @@ public class TraverseTree{
             }
         }
     }
-
+    // Reverse preorder of right first, root, right, left -> left, right, root
     public static void postorderIterative2(TreeNode root, List<Integer> res){
         Stack<TreeNode> s = new Stack<>();
         while (s.size() > 0 || root != null){
@@ -83,17 +121,33 @@ public class TraverseTree{
         }
     }
 
-    public static void main(String[] args){
-        List<Integer> res = new LinkedList<>();
-        String str = "0 1 2 3 4 5 6";
-        TreeNode root = TreeNode.fromString(str);
-        postorderIterative(root, res);
-        print(res);
+    public static void postorderIterative3(TreeNode root, List<Integer> res){
+        Stack<Pair> s = new Stack<>();
+        s.push(new Pair(root, false));
+        while (s.size() > 0){
+            Pair r = s.pop();
+            if(r.self){
+                res.add(r.node.val);
+                continue;
+            }
+            
+            s.push(new Pair(r.node, true));
+
+            if(r.node.right != null){
+                s.push(new Pair(r.node.right, false));
+            }    
+
+            if(r.node.left != null){
+                s.push(new Pair(r.node.left, false));
+            }
+        }
     }
 
-    private static void print(List<Integer> res){
-        for(Integer i : res){
-            System.out.printf(i + " ");
-        }
+    public static void main(String[] args){
+        List<Integer> res = new LinkedList<>();
+        String str = "1 2 3 4 5 6 7";
+        TreeNode root = TreeNode.fromString(str);
+        postorderIterative3(root, res);
+        Util.print(res);
     }
 }

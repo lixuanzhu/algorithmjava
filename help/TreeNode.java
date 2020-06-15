@@ -12,7 +12,7 @@ public class TreeNode{
 
     public static String toString(TreeNode root){
         String res = "";
-        Queue<TreeNode> q = new LinkedList<>();
+        Deque<TreeNode> q = new LinkedList<>();
         q.add(root);
         while(q.size() != 0){
             TreeNode cur = q.poll();
