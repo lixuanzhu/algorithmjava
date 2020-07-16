@@ -11,20 +11,20 @@ public class TreeNode{
     }
 
     public static String toString(TreeNode root){
-        String res = "";
-        Deque<TreeNode> q = new LinkedList<>();
+        StringBuilder res = new StringBuilder();
+        Queue<TreeNode> q = new LinkedList<>();
         q.add(root);
-        while(q.size() != 0){
+        while(q.size() > 0){
             TreeNode cur = q.poll();
             if(cur == null) {
-                res = res + " n";
+                res = res.append(" n");
                 continue;
             }
-            res = res + " " + cur.val;
+            res = res.append(" ").append(cur.val);
             q.add(cur.left);
             q.add(cur.right);
         }
-        return res;
+        return res.toString();
     }
 
     public static TreeNode fromString(String str){
