@@ -1,15 +1,13 @@
 class CountAndSay {
     public static String countAndSay(int n) {
-        if(n == 1){
-            return "1";
-        }
+        if (n == 1) return "1";
         
         String p = countAndSay(n-1);
         StringBuilder res = new StringBuilder();
         int count = 0;
         Character c = p.charAt(0);
         for(int i = 0; i < p.length(); i++){
-            if(p.charAt(i) == c){
+            if (p.charAt(i) == c) {
                 count++;
             } else {
                 res.append(count).append(c);
