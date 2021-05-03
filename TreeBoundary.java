@@ -54,7 +54,7 @@ public class TreeBoundary {
     }
 
     public static void main(String[] args){
-        String tree = "1 2 3 4 5 6 n n n 7 8 9 10 n";
+        String tree = "40 20 60 10 30 50 70 n 5 n n n 55 n n n 45";
         TreeNode root = TreeNode.fromString(tree);
         List<Integer> res = TreeBoundary.getBoundary(root);
         for(int i = 0; i < res.size(); i++){
