@@ -24,6 +24,15 @@ public class TreeNode{
             q.add(cur.left);
             q.add(cur.right);
         }
+
+        for(int i = res.length() - 1; i >=0; i--){
+            char c = res.charAt(i);
+            if(c != 'n' && c != ' '){
+                break;
+            }
+
+            res.deleteCharAt(i);
+        }
         return res.toString();
     }
 
@@ -39,20 +48,38 @@ public class TreeNode{
                 cur.left = new TreeNode(Integer.parseInt(arr[i]));
                 q.add(cur.left);
             }
-            if(i < arr.length - 1) i++;
-            if(!arr[i].equals("n")){
-                cur.right = new TreeNode(Integer.parseInt(arr[i]));
-                q.add(cur.right);
+            if(i == arr.length - 1){
+                break;
+            } else {
+                i++;
+                if(!arr[i].equals("n")){
+                    cur.right = new TreeNode(Integer.parseInt(arr[i]));
+                    q.add(cur.right);
+                }
             }
         }
 
         return res;
     }
 
+    public static void print(TreeNode root){
+        print(root, 0);
+    }
+
+    private static void print(TreeNode root, int level){
+        if(root == null){
+            return;
+        }
+        print(root.left, level + 1);
+        System.out.println("    ".repeat(level) + root.val);
+        print(root.right, level +1); 
+    }
+
     public static void main(String[] args){
-        String str = "1 2 3 n 5 6";
+        String str = "1 2 n n 4 5 6";
         TreeNode node = fromString(str);
         String str2 = toString(node);
         System.out.println(str2);
+        print(node);
     }
 }
