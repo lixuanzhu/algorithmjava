@@ -33,7 +33,7 @@ public class TreeNode{
 
             res.deleteCharAt(i);
         }
-        return res.toString();
+        return res.toString().trim();
     }
 
     public static TreeNode fromString(String str){

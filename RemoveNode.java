@@ -44,9 +44,9 @@ public class RemoveNode{
         TreeNode root = TreeNode.fromString(str);
         List<TreeNode> res = removeNode(root);
         for(TreeNode node : res){
-            //System.out.println(TreeNode.toString(node));
-            System.out.println();
+            System.out.println(TreeNode.toString(node));
             TreeNode.print(node);
+            System.out.println();
         }
     }
 }
