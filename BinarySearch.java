@@ -3,9 +3,9 @@
 public class BinarySearch {
     public static void main(String[] args){
         int[] nums = {1, 1, 1, 4, 4, 6, 6};
-        // System.out.println(search(nums, 3));
-        // System.out.println(searchLeft(nums, 5));
-        // System.out.println(searchRight(nums, 4));
+        System.out.println(search(nums, 3));
+        System.out.println(searchLeft(nums, 5));
+        System.out.println(searchRight(nums, 4));
         System.out.println(searchLeft2(nums, 7));
         System.out.println(searchRight2(nums, 4));
     }
@@ -40,8 +40,10 @@ public class BinarySearch {
                 l = m + 1;
             }
         }
-
-        if (l >= nums.length || nums[l] != target) // Check left value and must check boundary
+        
+        if ( nums.length == 0 ||    // must check length == 0 
+            l >= nums.length ||     // must check boundary
+            nums[l] != target)      // Check left value 
             return -1;
 
         return  l; 
