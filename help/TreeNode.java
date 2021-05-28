@@ -76,11 +76,59 @@ public class TreeNode{
         print(root.right, level +1); 
     }
 
+    public static String toPreString(TreeNode root){
+        StringBuilder sb = new StringBuilder();
+        toPreString(root, sb);       
+        return sb.toString();
+    }
+
+    private static void toPreString(TreeNode root, StringBuilder sb){
+        if(root == null){
+            sb.append("n").append(" ");
+            return;
+        }
+        sb.append(root.val).append(" ");
+        toPreString(root.left, sb);
+        toPreString(root.right, sb);
+    }
+
+    public static TreeNode fromPreString(String pre){
+        String[] arr = pre.split(" ");
+        List<String> list = new ArrayList<>();
+        for(int i = arr.length -1; i >=0; i--){
+            list.add(arr[i]);
+        }
+
+        return fromPreString(list);
+    }
+
+    private static TreeNode fromPreString(List<String> list){
+        if(list.size() == 0){
+            return null;
+        }
+        
+        String s = list.remove(list.size() - 1);
+
+        if (s.equals("n")){
+            return null;
+        }
+
+        TreeNode root = new TreeNode(Integer.valueOf(s));
+        root.left = fromPreString(list);
+        root.right = fromPreString(list);
+        return root;
+    }
+
     public static void main(String[] args){
-        String str = "1 2 n n 4 5 6";
-        TreeNode node = fromString(str);
-        String str2 = toString(node);
+        String str = "1 2 3 4 5 n 7";
+        TreeNode root = fromString(str);
+        print(root);
+        String str2 = toString(root);
         System.out.println(str2);
-        print(node);
+        
+        String str3 = toPreString(root);
+        System.out.println(str3);
+        TreeNode root2 = fromPreString(str3);
+        print(root2);
     }
 }

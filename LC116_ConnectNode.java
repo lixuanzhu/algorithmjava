@@ -1,7 +1,7 @@
 import java.util.*;
 import help.*;
 
-public class ConnectNode {
+public class LC116_ConnectNode {
     public static void main(String[] args){
         String str = "1 2 3 4 5 6 7 8 9 10 11 12 13 14 15";
         TreeNode root = TreeNode.fromString(str);
